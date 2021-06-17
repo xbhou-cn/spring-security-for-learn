@@ -5,6 +5,7 @@
     <modules>
         <module>step01</module>
         <module>step02</module>
+        <module>step03</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
