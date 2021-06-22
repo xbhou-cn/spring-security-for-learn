@@ -1,11 +1,13 @@
 ### UserDetailsService接口讲解: 查询数据库用户名和密码的过程
-1. 创建类继承UsernamePasswordAuthenticationFilter，并重写attemptAuthentication，successfulAuthentication，unsuccessfulAuthentication
+
+1.
+创建类继承UsernamePasswordAuthenticationFilter，并重写attemptAuthentication，successfulAuthentication，unsuccessfulAuthentication
 2. 创建类实现UserDetailsService接口讲解，编写查询数据库的逻辑，返回User(org.springframework.security.core.userdetails)对象
 
- 
-
 ### PasswordEncoder接口讲解: 提供加密方式对密码进行加密，用于返回User对象里面的密码加密
+
 **BCryptPasswordEncoder**是SpringSecurity官方推荐的的密码解析器
+
 ~~~java
 package xb.hou;
 
@@ -32,20 +34,24 @@ public class BCryptPasswordEncoderTest {
 
 ~~~
 
-
 ### 认证
+
 #### 设置登陆的用户名和密码
+
 1. 通配置文件(application.yml)
+
 ~~~yml
 spring:
-    security:
-      user:
-        name: xbhou
-        password: 123456
+  security:
+    user:
+      name: xbhou
+      password: 123456
 ~~~
+
 2. 通过配置类
 
 **注意：**
+
 1. configure(WebSecurity) 配置Security的filter链
 
 2. configure(HttpSecurity) 配置如何通过连接器的保护
@@ -82,7 +88,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 ~~~
+
 **注意：** 使用该方法之前要先把PasswordEncoder创建出
+
 ~~~java
 package xb.hou;
 
@@ -109,10 +117,13 @@ public class AppRun {
 }
 
 ~~~
+
 3. 自定义编写实现类
+
 ~~~
    1. 创建配置类，指定使用哪一个UserDetailsService的实现类
 ~~~
+
 ~~~java
 package xb.hou.config;
 
@@ -138,6 +149,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 ~~~
+
     2. 编写实现类，返回User对象
 
 ~~~java
@@ -159,7 +171,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        // TODO 可以在此处查数据库等操作，获取用户
+        // TODO 可以在此处查数据库等操作，通过登录名进行查询获取用户，security自动比对密码是否正确
         return new User("xbhou", passwordEncoder.encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
     }
 }
