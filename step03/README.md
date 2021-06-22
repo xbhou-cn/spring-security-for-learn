@@ -1,7 +1,7 @@
 ### UserDetailsService接口讲解: 查询数据库用户名和密码的过程
 
-1.
-创建类继承UsernamePasswordAuthenticationFilter，并重写attemptAuthentication，successfulAuthentication，unsuccessfulAuthentication
+1.创建类继承UsernamePasswordAuthenticationFilter，并重写attemptAuthentication，successfulAuthentication，unsuccessfulAuthentication
+
 2. 创建类实现UserDetailsService接口讲解，编写查询数据库的逻辑，返回User(org.springframework.security.core.userdetails)对象
 
 ### PasswordEncoder接口讲解: 提供加密方式对密码进行加密，用于返回User对象里面的密码加密
