@@ -6,6 +6,7 @@
         <module>step01</module>
         <module>step02</module>
         <module>step03</module>
+        <module>step04</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -21,6 +22,7 @@
     <packaging>pom</packaging>
     <properties>
         <java.version>11</java.version>
+        <druid.version>1.1.24</druid.version>
     </properties>
     <dependencies>
         <dependency>
@@ -43,6 +45,15 @@
             <version>1.7.5</version>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
