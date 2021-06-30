@@ -3,7 +3,7 @@
 #### 记住密码
 
 **流程**
-![img.png](img.png)
+![image](https://user-images.githubusercontent.com/47892921/123993979-84a18d80-d9ff-11eb-9b95-40d4418276f7.png)
 
 1. 首次认证的源码解析
 
